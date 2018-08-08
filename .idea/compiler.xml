@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="concurrent_test" />
         <module name="druid_test" />
+        <module name="flink_test" />
         <module name="hadoop_test" />
         <module name="jdk_test" />
         <module name="netty_test" />
@@ -17,6 +18,7 @@
       <module name="AllTest" target="1.5" />
       <module name="concurrent_test" target="1.5" />
       <module name="druid_test" target="1.5" />
+      <module name="flink_test" target="1.5" />
       <module name="hadoop_test" target="1.5" />
       <module name="jdk_test" target="1.5" />
       <module name="netty_test" target="1.5" />
