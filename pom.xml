@@ -12,6 +12,8 @@
         <module>hadoop_test</module>
         <module>jdk_test</module>
         <module>druid_test</module>
+        <module>concurrent_test</module>
+        <module>netty_test</module>
     </modules>
 
 

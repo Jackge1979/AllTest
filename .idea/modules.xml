@@ -3,9 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AllTest.iml" filepath="$PROJECT_DIR$/AllTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/concurrent_test/concurrent_test.iml" filepath="$PROJECT_DIR$/concurrent_test/concurrent_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/druid_test/druid_test.iml" filepath="$PROJECT_DIR$/druid_test/druid_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/hadoop_test/hadoop_test.iml" filepath="$PROJECT_DIR$/hadoop_test/hadoop_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdk_test/jdk_test.iml" filepath="$PROJECT_DIR$/jdk_test/jdk_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty_test/netty_test.iml" filepath="$PROJECT_DIR$/netty_test/netty_test.iml" />
     </modules>
   </component>
 </project>
