@@ -11,6 +11,7 @@
     <modules>
         <module>hadoop_test</module>
         <module>jdk_test</module>
+        <module>druid_test</module>
     </modules>
 
 
