@@ -15,6 +15,7 @@
         <module>concurrent_test</module>
         <module>netty_test</module>
         <module>flink_test</module>
+        <module>spark_test</module>
     </modules>
 
 

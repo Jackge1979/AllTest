@@ -12,6 +12,7 @@
         <module name="hadoop_test" />
         <module name="jdk_test" />
         <module name="netty_test" />
+        <module name="spark_test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -22,6 +23,7 @@
       <module name="hadoop_test" target="1.5" />
       <module name="jdk_test" target="1.5" />
       <module name="netty_test" target="1.5" />
+      <module name="spark_test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

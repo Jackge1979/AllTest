@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/hadoop_test/hadoop_test.iml" filepath="$PROJECT_DIR$/hadoop_test/hadoop_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdk_test/jdk_test.iml" filepath="$PROJECT_DIR$/jdk_test/jdk_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty_test/netty_test.iml" filepath="$PROJECT_DIR$/netty_test/netty_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spark_test/spark_test.iml" filepath="$PROJECT_DIR$/spark_test/spark_test.iml" />
     </modules>
   </component>
 </project>
