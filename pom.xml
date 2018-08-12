@@ -16,6 +16,7 @@
         <module>netty_test</module>
         <module>flink_test</module>
         <module>spark_test</module>
+        <module>java_test</module>
     </modules>
 
 

@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/druid_test/druid_test.iml" filepath="$PROJECT_DIR$/druid_test/druid_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/flink_test/flink_test.iml" filepath="$PROJECT_DIR$/flink_test/flink_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/hadoop_test/hadoop_test.iml" filepath="$PROJECT_DIR$/hadoop_test/hadoop_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_test/java_test.iml" filepath="$PROJECT_DIR$/java_test/java_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdk_test/jdk_test.iml" filepath="$PROJECT_DIR$/jdk_test/jdk_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty_test/netty_test.iml" filepath="$PROJECT_DIR$/netty_test/netty_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/spark_test/spark_test.iml" filepath="$PROJECT_DIR$/spark_test/spark_test.iml" />
