@@ -17,6 +17,7 @@
         <module>flink_test</module>
         <module>spark_test</module>
         <module>java_test</module>
+        <module>hive_test</module>
     </modules>
 
 
