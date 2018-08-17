@@ -10,6 +10,8 @@
         <module name="druid_test" />
         <module name="flink_test" />
         <module name="hadoop_test" />
+        <module name="hive_test" />
+        <module name="java_test" />
         <module name="jdk_test" />
         <module name="netty_test" />
         <module name="spark_test" />
@@ -21,6 +23,8 @@
       <module name="druid_test" target="1.5" />
       <module name="flink_test" target="1.5" />
       <module name="hadoop_test" target="1.5" />
+      <module name="hive_test" target="1.5" />
+      <module name="java_test" target="1.5" />
       <module name="jdk_test" target="1.5" />
       <module name="netty_test" target="1.5" />
       <module name="spark_test" target="1.5" />
