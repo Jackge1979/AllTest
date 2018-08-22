@@ -124,7 +124,7 @@ public class DtwaveLineageLogger implements ExecuteWithHookContext {
     public void run(HookContext hookContext) {
         assert(hookContext.getHookType() == HookType.POST_EXEC_HOOK);
         QueryPlan plan = hookContext.getQueryPlan();
-        hookContext.getIndex();
+//        hookContext.getIndex();
 //        Index index =  LineageCtx.Index;
         SessionState ss = SessionState.get();
         if (ss != null && OPERATION_NAMES.contains(plan.getOperationName())
@@ -210,81 +210,81 @@ public class DtwaveLineageLogger implements ExecuteWithHookContext {
      * For each target column, find out its sources based on the dependency index.
      */
     private List<Edge> getEdges(QueryPlan plan, Index index) {
-        LinkedHashMap<String, ObjectPair<SelectOperator,
-                org.apache.hadoop.hive.ql.metadata.Table>> finalSelOps = index.getFinalSelectOps();
-
-        Map<String, Vertex> vertexCache = new LinkedHashMap<String, Vertex>();
-        List<Edge> edges = new ArrayList<Edge>();
-        for (ObjectPair<SelectOperator,
-                org.apache.hadoop.hive.ql.metadata.Table> pair: finalSelOps.values()) {
-            List<FieldSchema> fieldSchemas = plan.getResultSchema().getFieldSchemas();
-            SelectOperator finalSelOp = pair.getFirst();
-            org.apache.hadoop.hive.ql.metadata.Table t = pair.getSecond();
-            String destTableName = null;
-            List<String> colNames = null;
-            if (t != null) {
-                destTableName = t.getDbName() + "." + t.getTableName();
-                fieldSchemas = t.getCols();
-            } else {
-                // Based on the plan outputs, find out the target table name and column names.
-                for (WriteEntity output : plan.getOutputs()) {
-                    Entity.Type entityType = output.getType();
-                    if (entityType == Entity.Type.TABLE
-                            || entityType == Entity.Type.PARTITION) {
-                        t = output.getTable();
-                        destTableName = t.getDbName() + "." + t.getTableName();
-                        List<FieldSchema> cols = t.getCols();
-                        if (cols != null && !cols.isEmpty()) {
-                            colNames = Utilities.getColumnNamesFromFieldSchema(cols);
-                        }
-                        break;
-                    }
-                }
-            }
-            Map<ColumnInfo, Dependency> colMap = index.getDependencies(finalSelOp);
-            List<Dependency> dependencies = colMap != null ? Lists.newArrayList(colMap.values()) : null;
-            int fields = fieldSchemas.size();
-            if (t != null && colMap != null && fields < colMap.size()) {
-                // Dynamic partition keys should be added to field schemas.
-                List<FieldSchema> partitionKeys = t.getPartitionKeys();
-                int dynamicKeyCount = colMap.size() - fields;
-                int keyOffset = partitionKeys.size() - dynamicKeyCount;
-                if (keyOffset >= 0) {
-                    fields += dynamicKeyCount;
-                    for (int i = 0; i < dynamicKeyCount; i++) {
-                        FieldSchema field = partitionKeys.get(keyOffset + i);
-                        fieldSchemas.add(field);
-                        if (colNames != null) {
-                            colNames.add(field.getName());
-                        }
-                    }
-                }
-            }
-            if (dependencies == null || dependencies.size() != fields) {
-                log("Result schema has " + fields
-                        + " fields, but we don't get as many dependencies");
-            } else {
-                // Go through each target column, generate the lineage edges.
-                Set<Vertex> targets = new LinkedHashSet<Vertex>();
-                for (int i = 0; i < fields; i++) {
-                    Vertex target = getOrCreateVertex(vertexCache,
-                            getTargetFieldName(i, destTableName, colNames, fieldSchemas),
-                            Vertex.Type.COLUMN);
-                    targets.add(target);
-                    Dependency dep = dependencies.get(i);
-                    addEdge(vertexCache, edges, dep.getBaseCols(), target,
-                            dep.getExpr(), Edge.Type.PROJECTION);
-                }
-                Set<Predicate> conds = index.getPredicates(finalSelOp);
-                if (conds != null && !conds.isEmpty()) {
-                    for (Predicate cond: conds) {
-                        addEdge(vertexCache, edges, cond.getBaseCols(),
-                                new LinkedHashSet<Vertex>(targets), cond.getExpr(),
-                                Edge.Type.PREDICATE);
-                    }
-                }
-            }
-        }
+//        LinkedHashMap<String, ObjectPair<SelectOperator,
+//                org.apache.hadoop.hive.ql.metadata.Table>> finalSelOps = index.getFinalSelectOps();
+//
+//        Map<String, Vertex> vertexCache = new LinkedHashMap<String, Vertex>();
+//        List<Edge> edges = new ArrayList<Edge>();
+//        for (ObjectPair<SelectOperator,
+//                org.apache.hadoop.hive.ql.metadata.Table> pair: finalSelOps.values()) {
+//            List<FieldSchema> fieldSchemas = plan.getResultSchema().getFieldSchemas();
+//            SelectOperator finalSelOp = pair.getFirst();
+//            org.apache.hadoop.hive.ql.metadata.Table t = pair.getSecond();
+//            String destTableName = null;
+//            List<String> colNames = null;
+//            if (t != null) {
+//                destTableName = t.getDbName() + "." + t.getTableName();
+//                fieldSchemas = t.getCols();
+//            } else {
+//                // Based on the plan outputs, find out the target table name and column names.
+//                for (WriteEntity output : plan.getOutputs()) {
+//                    Entity.Type entityType = output.getType();
+//                    if (entityType == Entity.Type.TABLE
+//                            || entityType == Entity.Type.PARTITION) {
+//                        t = output.getTable();
+//                        destTableName = t.getDbName() + "." + t.getTableName();
+//                        List<FieldSchema> cols = t.getCols();
+//                        if (cols != null && !cols.isEmpty()) {
+//                            colNames = Utilities.getColumnNamesFromFieldSchema(cols);
+//                        }
+//                        break;
+//                    }
+//                }
+//            }
+//            Map<ColumnInfo, Dependency> colMap = index.getDependencies(finalSelOp);
+//            List<Dependency> dependencies = colMap != null ? Lists.newArrayList(colMap.values()) : null;
+//            int fields = fieldSchemas.size();
+//            if (t != null && colMap != null && fields < colMap.size()) {
+//                // Dynamic partition keys should be added to field schemas.
+//                List<FieldSchema> partitionKeys = t.getPartitionKeys();
+//                int dynamicKeyCount = colMap.size() - fields;
+//                int keyOffset = partitionKeys.size() - dynamicKeyCount;
+//                if (keyOffset >= 0) {
+//                    fields += dynamicKeyCount;
+//                    for (int i = 0; i < dynamicKeyCount; i++) {
+//                        FieldSchema field = partitionKeys.get(keyOffset + i);
+//                        fieldSchemas.add(field);
+//                        if (colNames != null) {
+//                            colNames.add(field.getName());
+//                        }
+//                    }
+//                }
+//            }
+//            if (dependencies == null || dependencies.size() != fields) {
+//                log("Result schema has " + fields
+//                        + " fields, but we don't get as many dependencies");
+//            } else {
+//                // Go through each target column, generate the lineage edges.
+//                Set<Vertex> targets = new LinkedHashSet<Vertex>();
+//                for (int i = 0; i < fields; i++) {
+//                    Vertex target = getOrCreateVertex(vertexCache,
+//                            getTargetFieldName(i, destTableName, colNames, fieldSchemas),
+//                            Vertex.Type.COLUMN);
+//                    targets.add(target);
+//                    Dependency dep = dependencies.get(i);
+//                    addEdge(vertexCache, edges, dep.getBaseCols(), target,
+//                            dep.getExpr(), Edge.Type.PROJECTION);
+//                }
+//                Set<Predicate> conds = index.getPredicates(finalSelOp);
+//                if (conds != null && !conds.isEmpty()) {
+//                    for (Predicate cond: conds) {
+//                        addEdge(vertexCache, edges, cond.getBaseCols(),
+//                                new LinkedHashSet<Vertex>(targets), cond.getExpr(),
+//                                Edge.Type.PREDICATE);
+//                    }
+//                }
+//            }
+//        }
 //        return edges;
         return null;
     }
