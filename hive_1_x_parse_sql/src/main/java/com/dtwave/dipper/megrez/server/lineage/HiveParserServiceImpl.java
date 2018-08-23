@@ -7,7 +7,13 @@ import org.apache.hadoop.hive.ql.Driver;
 import org.apache.hadoop.hive.ql.QueryPlan;
 import org.apache.hadoop.hive.ql.hooks.DtwaveLineageLogger;
 import org.apache.hadoop.hive.ql.hooks.HookContext;
+import org.apache.hadoop.hive.ql.hooks.LineageInfo;
+import org.apache.hadoop.hive.ql.lib.Node;
+import org.apache.hadoop.hive.ql.lib.NodeProcessor;
+import org.apache.hadoop.hive.ql.lib.NodeProcessorCtx;
 import org.apache.hadoop.hive.ql.metadata.Hive;
+import org.apache.hadoop.hive.ql.optimizer.lineage.ExprProcCtx;
+import org.apache.hadoop.hive.ql.optimizer.lineage.LineageCtx;
 import org.apache.hadoop.hive.ql.parse.*;
 import org.apache.hadoop.hive.ql.plan.HiveOperation;
 import org.apache.hadoop.hive.ql.session.SessionState;
@@ -18,11 +24,12 @@ import com.dtwave.dipper.megrez.server.lineage.Entity;
 import org.apache.hadoop.hive.ql.hooks.Entity.Type;
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by lcc on 2018/8/21.
  */
-public class HiveParserServiceImpl  {
+public class HiveParserServiceImpl  implements NodeProcessor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HiveParserServiceImpl.class);
     private static final String QUERY_ID = "query_id";
@@ -48,6 +55,15 @@ public class HiveParserServiceImpl  {
         } catch (Exception e) {
             LOGGER.error("建立连接hive metastore服务出错, 错误: ", e);
         }
+    }
+
+
+    @Override
+    public Object process(Node nd, Stack<Node> stack, NodeProcessorCtx procCtx, Object... nodeOutputs) throws SemanticException {
+        ExprProcCtx epc = (ExprProcCtx) procCtx;
+        LineageCtx lc = epc.getLineageCtx();
+        LineageCtx.Index index = lc.getIndex();
+        return null;
     }
 
     private String combine(String command,String currentDatabase){
@@ -159,4 +175,6 @@ public class HiveParserServiceImpl  {
         LOGGER.info("result-1: {}", service.parse("insert into myuser select * from sink","lccdb",true));
 
     }
+
+
 }
