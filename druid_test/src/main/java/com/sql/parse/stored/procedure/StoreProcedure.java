@@ -78,6 +78,12 @@ public class StoreProcedure {
             String params = functionParmms.substring(0,functionParmms.length()-1);
             GreenplumEntity greenplumEntity =  getStoreFunctionInDb( functionName);
             String  storeDesc = greenplumEntity.getProsrc();
+            if(storeDesc == null ){
+                continue;
+            }
+            if(storeDesc.contains(".")){
+                storeDesc = storeDesc.split(".")[1];
+            }
             storeDesc = store;
             storeDesc = removeAnnotation(storeDesc);
             storeDesc = getFromatSql(storeDesc);
