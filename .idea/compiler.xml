@@ -2,12 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for AllTest" enabled="true">
-        <sourceOutputDir name="../../target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../../target/generated-test-sources/test-annotations" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="concurrent_test" />
+        <module name="druid_test" />
         <module name="flink_test" />
+        <module name="GeneralSQLParser" />
         <module name="hadoop_test" />
         <module name="hive_1_x_parse_sql" />
         <module name="hive_test" />
@@ -16,18 +18,13 @@
         <module name="netty_test" />
         <module name="spark_test" />
       </profile>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="druid_test" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="AllTest" target="1.8" />
       <module name="concurrent_test" target="1.8" />
       <module name="druid_test" target="1.8" />
       <module name="flink_test" target="1.8" />
+      <module name="GeneralSQLParser" target="1.8" />
       <module name="hadoop_test" target="1.8" />
       <module name="hive_1_x_parse_sql" target="1.8" />
       <module name="hive_test" target="1.8" />

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AllTest.iml" filepath="$PROJECT_DIR$/AllTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GeneralSQLParser/GeneralSQLParser.iml" filepath="$PROJECT_DIR$/GeneralSQLParser/GeneralSQLParser.iml" />
       <module fileurl="file://$PROJECT_DIR$/concurrent_test/concurrent_test.iml" filepath="$PROJECT_DIR$/concurrent_test/concurrent_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/druid_test/druid_test.iml" filepath="$PROJECT_DIR$/druid_test/druid_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/flink_test/flink_test.iml" filepath="$PROJECT_DIR$/flink_test/flink_test.iml" />

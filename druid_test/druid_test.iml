@@ -11,9 +11,10 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.5" level="project" />
     <orderEntry type="library" name="postgresql-42.2.4" level="project" />
     <orderEntry type="library" name="ojdbc6" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.5" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.46" level="project" />
   </component>
 </module>

@@ -1,0 +1,1 @@
+insert into tablea select name,age from table b;
