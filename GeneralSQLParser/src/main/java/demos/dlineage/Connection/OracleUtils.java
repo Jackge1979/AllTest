@@ -1,23 +1,29 @@
-package demos.dlineage;
+package demos.dlineage.Connection;
+
+import demos.dlineage.entity.ConnectEntity;
+import demos.dlineage.ParseLineage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
 /**
- * Created by lcc on 2018/8/28.
+ * Created by lcc on 2018/8/27.
  */
-public class GreenplumUtils {
+public class OracleUtils {
 
+    private static final Logger logger = LoggerFactory.getLogger(ParseLineage.class);
 
-    private static String DRIVE_NAME = "org.postgresql.Driver";
+    private static String DRIVE_NAME = "oracle.jdbc.driver.OracleDriver";
 
 
 
 
     public static Connection getConnect(String url,String userName ,String password){
-
         try{
             Class.forName(DRIVE_NAME);
             Connection conn = DriverManager.getConnection(url, userName, password);
+            logger.info("提示！oracle数据库连接成功");
             return  conn;
         }catch (Exception e){
             e.printStackTrace();
@@ -28,7 +34,7 @@ public class GreenplumUtils {
     public static String getTableNames(String TableName,ConnectEntity connectEntity ) {
         String columnsInDb = "";
         try {
-            String url = connectEntity.getUrl(); 
+            String url = connectEntity.getUrl();
             String userName = connectEntity.getUserName();
             String password = connectEntity.getPassword();
             Connection conn  = getConnect(url, userName, password);
@@ -63,20 +69,24 @@ public class GreenplumUtils {
             String url = connectEntity.getUrl();
             String userName = connectEntity.getUserName();
             String password = connectEntity.getPassword();
+            String dbName = connectEntity.getDbName();
             Connection conn  = getConnect(url, userName, password);
-            String sqlssss = "select * from pg_proc where proname='"+functionName+"';";
-            PreparedStatement pre = conn.prepareStatement(sqlssss);
-            ResultSet rs = pre.executeQuery();
+            String sqlssss = "select * from all_source where OWNER='"+dbName.toUpperCase()+"' and name='"+functionName.trim().toUpperCase()+"' ORDER BY line ASC";
+            PreparedStatement ps = conn.prepareStatement(sqlssss);
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
-//                String proname = rs.getString("proname");
-//                String proargnames = rs.getString("proargnames");
-                 storeSql = rs.getString("prosrc");
+                String text = rs.getString("TEXT");
+                storeSql = storeSql +  text;
             }
+
+            logger.info("提示！orcale的存储过程："+storeSql);
+            ps.close();
+            conn.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return storeSql;
-
     }
 
 

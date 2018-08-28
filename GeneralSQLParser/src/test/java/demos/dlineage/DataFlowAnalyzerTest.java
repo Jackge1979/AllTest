@@ -1,5 +1,6 @@
 package demos.dlineage;
 
+import demos.dlineage.entity.ConnectEntity;
 import gudusoft.gsqlparser.EDbVendor;
 import org.junit.Test;
 
@@ -489,6 +490,28 @@ public class DataFlowAnalyzerTest {
 
         allTest(OracleSQLS.ORACLE_SQL1,EDbVendor.dbvoracle,connectEntity);
     }
+
+    /**
+     * 测试点：完整的oracle测试
+     */
+    @Test
+    public  void test12() {
+        String sql = "call PROC_UPDATE_COMPOSITERATING()";
+        String url = "jdbc:oracle:thin:@47.97.11.138:1522:xe";
+        String username = "system";
+        String password = "oracle";
+        String dbName = "ZYT";
+        ConnectEntity connectEntity = new ConnectEntity();
+        connectEntity.setDbName(dbName);
+        connectEntity.setUrl(url);
+        connectEntity.setUserName(username);
+        connectEntity.setPassword(password);
+
+        ParseLineage  parseLineage = new ParseLineage();
+        parseLineage.getStoreFunctionInDb(sql,EDbVendor.dbvoracle,connectEntity);
+    }
+
+
 
 
 

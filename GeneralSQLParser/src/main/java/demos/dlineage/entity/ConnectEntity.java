@@ -1,4 +1,4 @@
-package demos.dlineage;
+package demos.dlineage.entity;
 
 import lombok.Data;
 

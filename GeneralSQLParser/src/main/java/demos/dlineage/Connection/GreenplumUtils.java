@@ -1,18 +1,21 @@
-package demos.dlineage;
+package demos.dlineage.Connection;
+
+import demos.dlineage.entity.ConnectEntity;
 
 import java.sql.*;
 
 /**
  * Created by lcc on 2018/8/28.
  */
-public class MysqlUtils {
-
-    private static String DRIVE_NAME = "oracle.jdbc.driver.OracleDriver";
+public class GreenplumUtils {
 
 
+    private static String DRIVE_NAME = "org.postgresql.Driver";
 
 
-    public static Connection getConnect(String url, String userName , String password){
+
+
+    public static Connection getConnect(String url,String userName ,String password){
 
         try{
             Class.forName(DRIVE_NAME);
@@ -27,7 +30,7 @@ public class MysqlUtils {
     public static String getTableNames(String TableName,ConnectEntity connectEntity ) {
         String columnsInDb = "";
         try {
-            String url = connectEntity.getUrl();
+            String url = connectEntity.getUrl(); 
             String userName = connectEntity.getUserName();
             String password = connectEntity.getPassword();
             Connection conn  = getConnect(url, userName, password);
@@ -50,6 +53,7 @@ public class MysqlUtils {
         return columnsInDb;
     }
 
+
     /**
      * 获取数据库中的存储过程
      *
@@ -61,24 +65,20 @@ public class MysqlUtils {
             String url = connectEntity.getUrl();
             String userName = connectEntity.getUserName();
             String password = connectEntity.getPassword();
-            Connection conn = DriverManager.getConnection(url, userName, password);
-            String sqlssss = "select * from all_source where OWNER='ZYT' and name='P_TEST' ORDER BY line ASC";
-            PreparedStatement ps = conn.prepareStatement(sqlssss);
-            ResultSet rs = ps.executeQuery();
+            Connection conn  = getConnect(url, userName, password);
+            String sqlssss = "select * from pg_proc where proname='"+functionName+"';";
+            PreparedStatement pre = conn.prepareStatement(sqlssss);
+            ResultSet rs = pre.executeQuery();
             while(rs.next()){
-                System.out.println("===============》"+rs.getString("TEXT"));
-                String text = rs.getString("TEXT");
-                storeSql = storeSql +  text;
+//                String proname = rs.getString("proname");
+//                String proargnames = rs.getString("proargnames");
+                 storeSql = rs.getString("prosrc");
             }
-
-            System.out.println("orcale的存储过程"+storeSql);
-            ps.close();
-            conn.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return storeSql;
+
     }
 
 

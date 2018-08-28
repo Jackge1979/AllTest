@@ -1,19 +1,20 @@
-package demos.dlineage;
+package demos.dlineage.Connection;
+
+import demos.dlineage.entity.ConnectEntity;
 
 import java.sql.*;
 
 /**
- * Created by lcc on 2018/8/27.
+ * Created by lcc on 2018/8/28.
  */
-public class OracleUtils {
-
+public class MysqlUtils {
 
     private static String DRIVE_NAME = "oracle.jdbc.driver.OracleDriver";
 
 
 
 
-    public static Connection getConnect(String url,String userName ,String password){
+    public static Connection getConnect(String url, String userName , String password){
 
         try{
             Class.forName(DRIVE_NAME);
@@ -51,7 +52,6 @@ public class OracleUtils {
         return columnsInDb;
     }
 
-
     /**
      * 获取数据库中的存储过程
      *
@@ -64,7 +64,7 @@ public class OracleUtils {
             String userName = connectEntity.getUserName();
             String password = connectEntity.getPassword();
             Connection conn = DriverManager.getConnection(url, userName, password);
-            String sqlssss = "select * from all_source where OWNER='"+userName+"' and name='"+functionName+"' ORDER BY line ASC";
+            String sqlssss = "select * from all_source where OWNER='ZYT' and name='P_TEST' ORDER BY line ASC";
             PreparedStatement ps = conn.prepareStatement(sqlssss);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
