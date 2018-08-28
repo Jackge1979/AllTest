@@ -64,7 +64,7 @@ public class OracleUtils {
             String userName = connectEntity.getUserName();
             String password = connectEntity.getPassword();
             Connection conn = DriverManager.getConnection(url, userName, password);
-            String sqlssss = "select * from all_source where OWNER='ZYT' and name='P_TEST' ORDER BY line ASC";
+            String sqlssss = "select * from all_source where OWNER='"+userName+"' and name='"+functionName+"' ORDER BY line ASC";
             PreparedStatement ps = conn.prepareStatement(sqlssss);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){

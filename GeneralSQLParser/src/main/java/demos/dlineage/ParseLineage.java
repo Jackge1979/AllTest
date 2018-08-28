@@ -11,6 +11,8 @@ import gudusoft.gsqlparser.TGSqlParser;
 import gudusoft.gsqlparser.TStatementList;
 import lombok.Synchronized;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.*;
@@ -19,6 +21,8 @@ import java.util.*;
  * Created by lcc on 2018/8/27.
  */
 public class ParseLineage {
+
+    private static final Logger logger = LoggerFactory.getLogger(ParseLineage.class);
 
 
     public  void getStoreFunctionInDb(String sql,EDbVendor dbType,ConnectEntity connectEntity) {
@@ -69,10 +73,10 @@ public class ParseLineage {
         sqlParser.parse();
 
         TStatementList stList = sqlParser.sqlstatements;
-        System.out.println("共有条"+stList.size()+"sql语句!");
+        logger.info("共有条"+stList.size()+"sql语句!");
         for(int i=0; i<stList.size(); i++){
             String sql = stList.get(i).toString();
-            System.out.println("=====》SQL:\r\n"+sql);
+            logger.info("=====》SQL:\r\n"+sql);
             parseLineage(sql,dbType, connectEntity);
         }
 
@@ -84,7 +88,7 @@ public class ParseLineage {
         String result = dataFlowAnalyzer.generateDataFlow( errorBuffer );
         if ( result != null )
         {
-            System.out.println( "解析结果===>\r\n"+result );
+            logger.info( "解析结果===>\r\n"+result );
             // 没有血缘信息的
             if(result.equals("<dlineage/>")){
                 return;
@@ -122,14 +126,12 @@ public class ParseLineage {
         result = result.replaceAll("parent_id","parentId");
         result = result.replaceAll("parent_name","parentName");
 
-//        System.out.println( "===> \r\n"+result );
-
         XStream xStream = new XStream();
         xStream.autodetectAnnotations(true);
         xStream.processAnnotations(DlineageEntity.class);
         DlineageEntity dlineageEntity = (DlineageEntity) xStream.fromXML(result);
 
-        System.out.println( "===> \r\n"+dlineageEntity.toString());
+        logger.info( "===> \r\n"+dlineageEntity.toString());
         transformtoMySelfLineage(dlineageEntity, sql, dbType,  connectEntity);
 
 
@@ -237,9 +239,9 @@ public class ParseLineage {
             megrezLineageDto.setEdges(edges);
             lineageParseResult.setMegrezLineageDto(megrezLineageDto);
             lineageParseResult.setFieldList(fieldList);
-            lineageParseResult.setInputList(hashSetToList(inputSet));
-            lineageParseResult.setOutputList(hashSetToList(outputSet));
-            System.out.println(lineageParseResult);
+            lineageParseResult.setInputList(hashSetToList(inputSet,dbName));
+            lineageParseResult.setOutputList(hashSetToList(outputSet,dbName));
+            logger.info(lineageParseResult.toString());
         }
 
 
@@ -254,10 +256,10 @@ public class ParseLineage {
      * @param oldSet
      * @return
      */
-    public List<Entity> hashSetToList(Set<String> oldSet)  {
+    public List<Entity> hashSetToList(Set<String> oldSet,String dbName)  {
         List<Entity>  list = new ArrayList<>();
         for(String table : oldSet ){
-            Entity entity = new Entity(null,table,null,null);
+            Entity entity = new Entity(dbName,table,null,null);
             list.add(entity);
         }
         return list;

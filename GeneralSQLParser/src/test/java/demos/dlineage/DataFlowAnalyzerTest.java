@@ -470,6 +470,8 @@ public class DataFlowAnalyzerTest {
     }
 
 
+
+
     /**
      * 测试点：oracle 存储过程
      */
@@ -485,14 +487,14 @@ public class DataFlowAnalyzerTest {
         connectEntity.setUserName(username);
         connectEntity.setPassword(password);
 
-        allTest(ORACLE_SQL,EDbVendor.dbvoracle,connectEntity);
+        allTest(OracleSQLS.ORACLE_SQL1,EDbVendor.dbvoracle,connectEntity);
     }
 
 
 
     public   void  allTest(String sqls,EDbVendor dbType,ConnectEntity connectEntity) {
         ParseLineage  parseLineage = new ParseLineage();
-        parseLineage.getStoreFunctionInDb(sqls,dbType,  connectEntity);
+        parseLineage.parseSqlsLineage(sqls,dbType,  connectEntity);
     }
 
 
