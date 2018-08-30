@@ -511,6 +511,37 @@ public class DataFlowAnalyzerTest {
         parseLineage.getStoreFunctionInDb(sql,EDbVendor.dbvoracle,connectEntity);
     }
 
+    /**
+     * 测试点：完整的oracle测试 不使用call调用
+     */
+    @Test
+    public  void test13() {
+        String sql = " declare\n" +
+                "       uName varchar(40);\n" +
+                "       Age int;\n" +
+                "    begin\n" +
+                "       uName:='1';\n" +
+                "       Age:=234;\n" +
+                "       PROC_UPDATE_COMPOSITERATING(uName,Age);\n" +
+                "       DBMS_OUTPUT.PUT_LINE(uName||'   '||Age);\n" +
+                "    END;\n" +
+                "    exit;";
+        String url = "jdbc:oracle:thin:@47.97.11.138:1522:xe";
+        String username = "system";
+        String password = "oracle";
+        String dbName = "ZYT";
+        ConnectEntity connectEntity = new ConnectEntity();
+        connectEntity.setDbName(dbName);
+        connectEntity.setUrl(url);
+        connectEntity.setUserName(username);
+        connectEntity.setPassword(password);
+
+        ParseLineage  parseLineage = new ParseLineage();
+        parseLineage.getStoreFunctionInDb(sql,EDbVendor.dbvoracle,connectEntity);
+    }
+
+
+
 
 
 

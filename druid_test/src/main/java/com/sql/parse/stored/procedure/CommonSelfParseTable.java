@@ -40,7 +40,6 @@ public class CommonSelfParseTable {
 
     public void parsTable(String sql) {
         sql = repacePGSqlSpecialFunction(sql);
-        sql = sql.toLowerCase();
         // 去除字符串中的空格、回车、换行符、制表符
         // 去除分号，主要是sql最后末尾
         sql = sql.replaceAll(";", " ");
@@ -60,35 +59,43 @@ public class CommonSelfParseTable {
         // 多个空格转换成一个空格
         sql = sql.replaceAll(" +", " ");
 
-        Set<String> inputSet = new HashSet<String>();
-        Set<String> outSet = new HashSet<String>();
-
-
+        Set<String> inputSet = new HashSet<>();
+        Set<String> outSet = new HashSet<>();
         String[] newWord = sql.split(" ");
 
         for (int i = 0; i < newWord.length; i++) {
-            if (newWord[i].trim().equals("") || newWord[i].trim().equals(" ")) {
+            String currentWord = newWord[i].trim().toLowerCase();
+            String nextWord = null;
+            if(i + 1 < newWord.length){
+                nextWord = newWord[i+1].trim().toLowerCase();
+            }
+            String next2Word = null;
+            if(i + 2 < newWord.length){
+                next2Word = newWord[i+2].trim().toLowerCase();
+            }
+
+            if (currentWord.equals("") || currentWord.equals(" ")) {
                 continue;
             }
 
             // 处理insert into 表名
-            if (newWord[i].trim().equals("insert") && i + 1 < newWord.length && newWord[i + 1].trim().equals("into") && i + 2 <= newWord.length) {
+            if (currentWord.equals("insert") && i + 1 < newWord.length && nextWord.equals("into") && i + 2 <= newWord.length) {
                 String outputTable = newWord[i + 2];
                 outSet.add(outputTable);
             }
 
             // 处理  insert overwrite table dwd_run1_smzj_step2  表名
-            if (newWord[i].trim().equals("insert") && i + 1 < newWord.length && newWord[i + 1].trim().equals("overwrite") && i + 2 <= newWord.length
-                    && newWord[i + 2].trim().equals("table") && i + 3 <= newWord.length) {
+            if (currentWord.equals("insert") && i + 1 < newWord.length && nextWord.equals("overwrite") && i + 2 <= newWord.length
+                    && next2Word.equals("table") && i + 3 <= newWord.length) {
                 String outputTable = newWord[i + 3];
                 outSet.add(outputTable);
             }
 
 
             // 处理insert into 表名
-            if (newWord[i].trim().equals("create") && i + 1 < newWord.length && newWord[i + 1].trim().equals("table") && i + 2 <= newWord.length) {
+            if ( currentWord.equals("create") && i + 1 < newWord.length && nextWord.equals("table") && i + 2 <= newWord.length) {
                 // 处理 create table if not exists demo_users的情况
-                if(newWord[i + 2].equals("if") && i + 5 < newWord.length ){
+                if( next2Word.equals("if") && i + 5 < newWord.length ){
                     String outputTable = newWord[i + 5];
                     outSet.add(outputTable);
                 }else{
@@ -99,26 +106,32 @@ public class CommonSelfParseTable {
 
 
             // 处理insert into 表名
-            if (newWord[i].trim().equals("alter") && i + 1 < newWord.length && newWord[i + 1].trim().equals("table") && i + 2 <= newWord.length) {
-                String outputTable = newWord[i + 2];
+            if (currentWord.equals("alter") && i + 1 < newWord.length && nextWord.equals("table") && i + 2 <= newWord.length) {
+                String outputTable = next2Word;
                 outSet.add(outputTable);
             }
 
             // 处理insert into 表名
-            if (newWord[i].trim().equals("drop") && i + 1 < newWord.length && newWord[i + 1].trim().equals("table") && i + 2 <= newWord.length) {
-                String outputTable = newWord[i + 2];
-                outSet.add(outputTable);
+            if (currentWord.equals("drop") && i + 1 < newWord.length && nextWord.equals("table") && i + 2 <= newWord.length) {
+                // 处理 create table if not exists demo_users的情况
+                if(newWord[i + 2].equals("if") && i + 4 <= newWord.length ){
+                    String outputTable = newWord[i + 4];
+                    outSet.add(outputTable);
+                }else{
+                    String outputTable = newWord[i + 2];
+                    outSet.add(outputTable);
+                }
             }
 
             // 处理insert into 表名
-            if (newWord[i].trim().equals("delete") && i + 1 < newWord.length && newWord[i + 1].trim().equals("table") && i + 2 <= newWord.length) {
+            if (currentWord.equals("delete") && i + 1 < newWord.length && nextWord.equals("table") && i + 2 <= newWord.length) {
                 String outputTable = newWord[i + 2];
                 outSet.add(outputTable);
             }
 
-            if (newWord[i].trim().equals("from") && i + 1 <= newWord.length) {
+            if (currentWord.equals("from") && i + 1 <= newWord.length) {
                 // 如果from后面是括号，说明后面是一个子查询,那么不能添加join后面的数据为表
-                if ((i + 1) <= newWord.length && (newWord[i + 1].trim().startsWith("(") || newWord[i + 1].trim().startsWith("select"))) {
+                if ((i + 1) <= newWord.length && (nextWord.startsWith("(") || nextWord.startsWith("select"))) {
                     continue;
                 }
 
@@ -143,9 +156,9 @@ public class CommonSelfParseTable {
             }
 
             // join的处理
-            if (newWord[i].trim().equals("join") && i + 1 <= newWord.length) {
+            if (currentWord.equals("join") && i + 1 <= newWord.length) {
                 // 如果join后面是括号，说明后面是一个子查询,那么不能添加join后面的数据为表
-                if ((i + 1) <= newWord.length && newWord[i + 1].trim().startsWith("(")) {
+                if ((i + 1) <= newWord.length && nextWord.startsWith("(")) {
                     continue;
                 }
                 String inputTable = newWord[i + 1];
@@ -153,9 +166,9 @@ public class CommonSelfParseTable {
             }
 
             // update的处理 update后面直接是table
-            if (newWord[i].trim().equals("update") && i + 1 <= newWord.length) {
+            if (currentWord.equals("update") && i + 1 <= newWord.length) {
                 // 如果join后面是括号，说明后面是一个子查询,那么不能添加join后面的数据为表
-                if ((i + 1) <= newWord.length && newWord[i + 1].trim().startsWith("(")) {
+                if ((i + 1) <= newWord.length && nextWord.startsWith("(")) {
                     continue;
                 }
                 String outputTable = newWord[i + 1];
@@ -168,9 +181,6 @@ public class CommonSelfParseTable {
         newInputSet = setToSplit(inputSet);
         newOnputSet = setToSplit(outSet);
 
-
-        System.out.println("输入：" + newInputSet.size() + " 内容：" + newInputSet);
-        System.out.println("输出：" + newOnputSet.size() + " 内容：" + newOnputSet);
 
     }
 
