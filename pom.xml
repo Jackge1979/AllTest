@@ -20,6 +20,7 @@
         <module>hive_test</module>
         <module>hive_1_x_parse_sql</module>
         <module>GeneralSQLParser</module>
+        <module>xml</module>
     </modules>
 
 
@@ -27,6 +28,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.12.6</lombok.version>
         <dubhe.common.version>1.0.4</dubhe.common.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
 

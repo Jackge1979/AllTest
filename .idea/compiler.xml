@@ -17,6 +17,7 @@
         <module name="jdk_test" />
         <module name="netty_test" />
         <module name="spark_test" />
+        <module name="xml" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -32,6 +33,7 @@
       <module name="jdk_test" target="1.8" />
       <module name="netty_test" target="1.8" />
       <module name="spark_test" target="1.8" />
+      <module name="xml" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
