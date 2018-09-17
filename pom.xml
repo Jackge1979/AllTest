@@ -21,6 +21,7 @@
         <module>hive_1_x_parse_sql</module>
         <module>GeneralSQLParser</module>
         <module>xml</module>
+        <module>druid_spring_myibatis</module>
     </modules>
 
 
