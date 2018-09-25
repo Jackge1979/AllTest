@@ -22,6 +22,7 @@
         <module>GeneralSQLParser</module>
         <module>xml</module>
         <module>druid_spring_myibatis</module>
+        <module>esper_test</module>
     </modules>
 
 

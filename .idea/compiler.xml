@@ -9,6 +9,7 @@
         <module name="concurrent_test" />
         <module name="druid_spring_myibatis" />
         <module name="druid_test" />
+        <module name="esper_test" />
         <module name="flink_test" />
         <module name="GeneralSQLParser" />
         <module name="hadoop_test" />
@@ -26,6 +27,7 @@
       <module name="concurrent_test" target="1.8" />
       <module name="druid_spring_myibatis" target="1.8" />
       <module name="druid_test" target="1.8" />
+      <module name="esper_test" target="1.8" />
       <module name="flink_test" target="1.8" />
       <module name="GeneralSQLParser" target="1.8" />
       <module name="hadoop_test" target="1.8" />
