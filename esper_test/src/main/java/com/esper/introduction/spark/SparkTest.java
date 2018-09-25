@@ -31,7 +31,6 @@ public class SparkTest {
         JavaDStream<Apple> mapRDD = lines.map(new Function<String, Apple>() {
             @Override
             public Apple call(String s) throws Exception {
-                System.out.println(Arrays.asList(s.split(" ")).get(0));
                 String[] danci = s.split(" ");
                 if( danci.length == 2 ){
                     Apple apple = new Apple();
@@ -42,6 +41,9 @@ public class SparkTest {
                 return null;
             }
         });
+
+        String[]  arg = {"select avg(price) from com.esper.introduction.spark.Apple.win:length_batch(2)"};
+
 
 
 
@@ -54,13 +56,15 @@ public class SparkTest {
                         if( apple != null ){
                             System.out.println("id: " + apple.getId());
                             System.out.println("proice: " + apple.getPrice());
-                            EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider();
-                            EPAdministrator admin = epService.getEPAdministrator();
-                            String product = Apple.class.getName();
-                            String epl = "select avg(price) from " + product + ".win:length_batch(4)";
-                            EPStatement state = admin.createEPL(epl);
-                            state.addListener(new AppleListener());
-                            EPRuntime runtime = epService.getEPRuntime();
+//                            EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider();
+//                            EPAdministrator admin = epService.getEPAdministrator();
+//                            String product = Apple.class.getName();
+//                            String epl = "select avg(price) from " + product + ".win:length_batch(4)";
+//                            EPStatement state = admin.createEPL(epl);
+//                            state.addListener(new AppleListener());
+//                            EPRuntime runtime = epService.getEPRuntime();
+                            EPRuntime runtime = ESperUtils.get(arg[0]);
+                            System.out.print(runtime.toString());
                             runtime.sendEvent(apple);
                         }
                     }
