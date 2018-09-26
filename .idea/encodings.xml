@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/GeneralSQLParser" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/concurrent_test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/crabondata_test" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/druid_spring_myibatis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/druid_test" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/esper_test" charset="UTF-8" />

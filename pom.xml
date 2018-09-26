@@ -23,6 +23,7 @@
         <module>xml</module>
         <module>druid_spring_myibatis</module>
         <module>esper_test</module>
+        <module>crabondata_test</module>
     </modules>
 
 
