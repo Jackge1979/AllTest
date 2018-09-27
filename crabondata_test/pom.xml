@@ -63,7 +63,7 @@
         <!--</dependency>-->
        <!---->
 
-        <!-- https://mvnrepository.com/artifact/org.apache.carbondata/carbondata-core -->
+        <!-- 注意：这里一定要排除spark-sql_2.10，不然会导致错误  -->
         <dependency>
             <groupId>org.apache.carbondata</groupId>
             <artifactId>carbondata-core</artifactId>

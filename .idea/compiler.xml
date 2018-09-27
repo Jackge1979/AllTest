@@ -8,6 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="concurrent_test" />
         <module name="crabondata_test" />
+        <module name="drools_test" />
+        <module name="drools_test1" />
+        <module name="drools_test7" />
         <module name="druid_spring_myibatis" />
         <module name="druid_test" />
         <module name="esper_test" />
@@ -27,6 +30,9 @@
       <module name="AllTest" target="1.8" />
       <module name="concurrent_test" target="1.8" />
       <module name="crabondata_test" target="1.8" />
+      <module name="drools_test" target="1.8" />
+      <module name="drools_test1" target="1.8" />
+      <module name="drools_test7" target="1.8" />
       <module name="druid_spring_myibatis" target="1.8" />
       <module name="druid_test" target="1.8" />
       <module name="esper_test" target="1.8" />
