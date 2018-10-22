@@ -6,8 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="assembly" />
         <module name="concurrent_test" />
         <module name="crabondata_test" />
+        <module name="drools_springboot" />
         <module name="drools_test" />
         <module name="drools_test1" />
         <module name="drools_test7" />
@@ -21,6 +23,7 @@
         <module name="hive_test" />
         <module name="java_test" />
         <module name="jdk_test" />
+        <module name="mysql_test" />
         <module name="netty_test" />
         <module name="spark_test" />
         <module name="xml" />
@@ -28,8 +31,10 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="AllTest" target="1.8" />
+      <module name="assembly" target="1.8" />
       <module name="concurrent_test" target="1.8" />
       <module name="crabondata_test" target="1.8" />
+      <module name="drools_springboot" target="1.8" />
       <module name="drools_test" target="1.8" />
       <module name="drools_test1" target="1.8" />
       <module name="drools_test7" target="1.8" />
@@ -43,6 +48,7 @@
       <module name="hive_test" target="1.8" />
       <module name="java_test" target="1.8" />
       <module name="jdk_test" target="1.8" />
+      <module name="mysql_test" target="1.8" />
       <module name="netty_test" target="1.8" />
       <module name="spark_test" target="1.8" />
       <module name="xml" target="1.8" />

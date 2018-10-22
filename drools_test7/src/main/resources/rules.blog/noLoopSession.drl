@@ -1,0 +1,13 @@
+package rules.blog
+
+import com.secbro.drools.model.Product;
+
+rule "updateDistcount"
+    no-loop true
+    when
+        productObj:Product(discount > 0);
+    then
+        productObj.setDiscount(productObj.getDiscount() + 1);
+        System.out.println(productObj.getDiscount());
+        update(productObj);
+    end

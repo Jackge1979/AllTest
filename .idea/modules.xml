@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AllTest.iml" filepath="$PROJECT_DIR$/AllTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/GeneralSQLParser/GeneralSQLParser.iml" filepath="$PROJECT_DIR$/GeneralSQLParser/GeneralSQLParser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assembly/assembly.iml" filepath="$PROJECT_DIR$/assembly/assembly.iml" />
       <module fileurl="file://$PROJECT_DIR$/concurrent_test/concurrent_test.iml" filepath="$PROJECT_DIR$/concurrent_test/concurrent_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/crabondata_test/crabondata_test.iml" filepath="$PROJECT_DIR$/crabondata_test/crabondata_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/drools_springboot/drools_springboot.iml" filepath="$PROJECT_DIR$/drools_springboot/drools_springboot.iml" />
       <module fileurl="file://$PROJECT_DIR$/drools_test/drools_test.iml" filepath="$PROJECT_DIR$/drools_test/drools_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/drools_test1/drools_test1.iml" filepath="$PROJECT_DIR$/drools_test1/drools_test1.iml" />
       <module fileurl="file://$PROJECT_DIR$/drools_test7/drools_test7.iml" filepath="$PROJECT_DIR$/drools_test7/drools_test7.iml" />
@@ -18,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/hive_test/hive_test.iml" filepath="$PROJECT_DIR$/hive_test/hive_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_test/java_test.iml" filepath="$PROJECT_DIR$/java_test/java_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdk_test/jdk_test.iml" filepath="$PROJECT_DIR$/jdk_test/jdk_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysql_test/mysql_test.iml" filepath="$PROJECT_DIR$/mysql_test/mysql_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty_test/netty_test.iml" filepath="$PROJECT_DIR$/netty_test/netty_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/spark_test/spark_test.iml" filepath="$PROJECT_DIR$/spark_test/spark_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/xml/xml.iml" filepath="$PROJECT_DIR$/xml/xml.iml" />

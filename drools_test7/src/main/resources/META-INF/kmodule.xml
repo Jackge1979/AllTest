@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
-    <kbase name="rules" packages="com.rules">
+
+    <kbase name="rules1" packages="com.rules">
         <ksession name="ksession-rule"/>
     </kbase>
+
+
+    <kbase name="rules2"  packages="org.drools.examples.helloworld">
+        <ksession name="HelloWorldKS"/>
+    </kbase>
+
+    <kbase name="rules3"  packages="rules.blog" >
+        <ksession name="noLoopSession"/>
+    </kbase>
+
+
+
 </kmodule>

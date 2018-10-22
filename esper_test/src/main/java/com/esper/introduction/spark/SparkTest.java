@@ -45,8 +45,6 @@ public class SparkTest {
         String[]  arg = {"select avg(price) from com.esper.introduction.spark.Apple.win:length_batch(2)"};
 
 
-
-
         mapRDD.foreachRDD(new VoidFunction<JavaRDD<Apple>>() {
             @Override
             public void call(JavaRDD<Apple> appleJavaRDD) throws Exception {
@@ -56,14 +54,14 @@ public class SparkTest {
                         if( apple != null ){
                             System.out.println("id: " + apple.getId());
                             System.out.println("proice: " + apple.getPrice());
-//                            EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider();
-//                            EPAdministrator admin = epService.getEPAdministrator();
-//                            String product = Apple.class.getName();
-//                            String epl = "select avg(price) from " + product + ".win:length_batch(4)";
-//                            EPStatement state = admin.createEPL(epl);
-//                            state.addListener(new AppleListener());
-//                            EPRuntime runtime = epService.getEPRuntime();
-                            EPRuntime runtime = ESperUtils.get(arg[0]);
+                            EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider();
+                            EPAdministrator admin = epService.getEPAdministrator();
+                            String product = Apple.class.getName();
+                            String epl = "select avg(price) from " + product + ".win:length_batch(4)";
+                            EPStatement state = admin.createEPL(epl);
+                            state.addListener(new AppleListener());
+                            EPRuntime runtime = epService.getEPRuntime();
+//                            EPRuntime runtime = ESperUtils.get(arg[0]);
                             System.out.print(runtime.toString());
                             runtime.sendEvent(apple);
                         }
@@ -71,11 +69,6 @@ public class SparkTest {
                 });
             }
         });
-
-
-
-
-
 
         jssc.start();
         //System.out.println(wordCounts.count());// Start the computation

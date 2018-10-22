@@ -27,10 +27,15 @@
         <module>drools_test</module>
         <module>drools_test1</module>
         <module>drools_test7</module>
+        <module>drools_springboot</module>
+        <module>mysql_test</module>
+        <module>assembly</module>
     </modules>
 
 
     <properties>
+        <all.test.version>1.0.0</all.test.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.12.6</lombok.version>
         <dubhe.common.version>1.0.4</dubhe.common.version>

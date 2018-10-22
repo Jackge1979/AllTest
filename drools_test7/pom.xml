@@ -26,7 +26,27 @@
             <artifactId>drools-compiler</artifactId>
             <version>${drools-version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-maven-plugin</artifactId>
+                <version>7.11.0.Final</version>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

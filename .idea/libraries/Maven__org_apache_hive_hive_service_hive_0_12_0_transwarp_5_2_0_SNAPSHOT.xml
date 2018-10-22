@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.hive:hive-service:hive-0.12.0-transwarp-5.2.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hive/hive-service/hive-0.12.0-transwarp-5.2.0-SNAPSHOT/hive-service-hive-0.12.0-transwarp-5.2.0-20181010.094531-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hive/hive-service/hive-0.12.0-transwarp-5.2.0-SNAPSHOT/hive-service-hive-0.12.0-transwarp-5.2.0-20181010.094531-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hive/hive-service/hive-0.12.0-transwarp-5.2.0-SNAPSHOT/hive-service-hive-0.12.0-transwarp-5.2.0-20181010.094531-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
