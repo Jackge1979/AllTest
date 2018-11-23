@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AllTest.iml" filepath="$PROJECT_DIR$/AllTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/GeneralSQLParser/GeneralSQLParser.iml" filepath="$PROJECT_DIR$/GeneralSQLParser/GeneralSQLParser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ldap/Ldap.iml" filepath="$PROJECT_DIR$/Ldap/Ldap.iml" />
       <module fileurl="file://$PROJECT_DIR$/assembly/assembly.iml" filepath="$PROJECT_DIR$/assembly/assembly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/calcite/calcite.iml" filepath="$PROJECT_DIR$/calcite/calcite.iml" />
       <module fileurl="file://$PROJECT_DIR$/concurrent_test/concurrent_test.iml" filepath="$PROJECT_DIR$/concurrent_test/concurrent_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/crabondata_test/crabondata_test.iml" filepath="$PROJECT_DIR$/crabondata_test/crabondata_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/drools_springboot/drools_springboot.iml" filepath="$PROJECT_DIR$/drools_springboot/drools_springboot.iml" />
@@ -15,11 +17,14 @@
       <module fileurl="file://$PROJECT_DIR$/druid_test/druid_test.iml" filepath="$PROJECT_DIR$/druid_test/druid_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/esper_test/esper_test.iml" filepath="$PROJECT_DIR$/esper_test/esper_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/flink_test/flink_test.iml" filepath="$PROJECT_DIR$/flink_test/flink_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hadoop_kerberos/hadoop_kerberos.iml" filepath="$PROJECT_DIR$/hadoop_kerberos/hadoop_kerberos.iml" />
       <module fileurl="file://$PROJECT_DIR$/hadoop_test/hadoop_test.iml" filepath="$PROJECT_DIR$/hadoop_test/hadoop_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/hive_1_x_parse_sql/hive_1_x_parse_sql.iml" filepath="$PROJECT_DIR$/hive_1_x_parse_sql/hive_1_x_parse_sql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hive_apache_test/hive_apache_test.iml" filepath="$PROJECT_DIR$/hive_apache_test/hive_apache_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/hive_test/hive_test.iml" filepath="$PROJECT_DIR$/hive_test/hive_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_test/java_test.iml" filepath="$PROJECT_DIR$/java_test/java_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdk_test/jdk_test.iml" filepath="$PROJECT_DIR$/jdk_test/jdk_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kerberos/kerberos.iml" filepath="$PROJECT_DIR$/kerberos/kerberos.iml" />
       <module fileurl="file://$PROJECT_DIR$/mysql_test/mysql_test.iml" filepath="$PROJECT_DIR$/mysql_test/mysql_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty_test/netty_test.iml" filepath="$PROJECT_DIR$/netty_test/netty_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/spark_test/spark_test.iml" filepath="$PROJECT_DIR$/spark_test/spark_test.iml" />

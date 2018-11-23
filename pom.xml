@@ -30,6 +30,11 @@
         <module>drools_springboot</module>
         <module>mysql_test</module>
         <module>assembly</module>
+        <module>calcite</module>
+        <module>kerberos</module>
+        <module>Ldap</module>
+        <module>hive_apache_test</module>
+        <module>hadoop_kerberos</module>
     </modules>
 
 

@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="assembly" />
+        <module name="calcite" />
         <module name="concurrent_test" />
         <module name="crabondata_test" />
         <module name="drools_springboot" />
@@ -18,11 +19,15 @@
         <module name="esper_test" />
         <module name="flink_test" />
         <module name="GeneralSQLParser" />
+        <module name="hadoop_kerberos" />
         <module name="hadoop_test" />
         <module name="hive_1_x_parse_sql" />
+        <module name="hive_apache_test" />
         <module name="hive_test" />
         <module name="java_test" />
         <module name="jdk_test" />
+        <module name="kerberos" />
+        <module name="Ldap" />
         <module name="mysql_test" />
         <module name="netty_test" />
         <module name="spark_test" />
@@ -32,6 +37,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="AllTest" target="1.8" />
       <module name="assembly" target="1.8" />
+      <module name="calcite" target="1.8" />
       <module name="concurrent_test" target="1.8" />
       <module name="crabondata_test" target="1.8" />
       <module name="drools_springboot" target="1.8" />
@@ -43,11 +49,15 @@
       <module name="esper_test" target="1.8" />
       <module name="flink_test" target="1.8" />
       <module name="GeneralSQLParser" target="1.8" />
+      <module name="hadoop_kerberos" target="1.8" />
       <module name="hadoop_test" target="1.8" />
       <module name="hive_1_x_parse_sql" target="1.8" />
+      <module name="hive_apache_test" target="1.8" />
       <module name="hive_test" target="1.8" />
       <module name="java_test" target="1.8" />
       <module name="jdk_test" target="1.8" />
+      <module name="kerberos" target="1.8" />
+      <module name="Ldap" target="1.8" />
       <module name="mysql_test" target="1.8" />
       <module name="netty_test" target="1.8" />
       <module name="spark_test" target="1.8" />
